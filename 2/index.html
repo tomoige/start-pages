@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyberpunk Start Page</title>
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        background-color: #0a0a0a;
+        color: #00ff41;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-image: linear-gradient(45deg, #4245ff 25%, transparent 25%),
+          linear-gradient(-45deg, #4245ff 25%, transparent 25%),
+          linear-gradient(45deg, transparent 75%, #4245ff 75%),
+          linear-gradient(-45deg, transparent 75%, #4245ff 75%);
+        background-size: 20px 20px;
+        background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+        animation: glitch 5s linear infinite;
+      }
+      @keyframes glitch {
+        0% {
+          opacity: 1;
+        }
+        7% {
+          opacity: 0.75;
+        }
+        10% {
+          opacity: 1;
+        }
+        27% {
+          opacity: 0.75;
+        }
+        30% {
+          opacity: 1;
+        }
+        65% {
+          opacity: 0.75;
+        }
+        70% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .search-container {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 2px solid #00ff41;
+        box-shadow: 0 0 10px #00ff41;
+      }
+      #search-form {
+        display: inline-block;
+      }
+      #search-input {
+        width: 300px;
+        padding: 10px;
+        background-color: #000;
+        border: 1px solid #00ff41;
+        color: #00ff41;
+        font-family: "Courier New", monospace;
+      }
+      #search-input::placeholder {
+        color: #008f11;
+      }
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #00ff41;
+        color: #000;
+        border: none;
+        cursor: pointer;
+        font-family: "Courier New", monospace;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      input[type="submit"]:hover {
+        background-color: #ff00ff;
+        color: #fff;
+      }
+      .list-container {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      .list {
+        flex: 1;
+        min-width: 200px;
+        margin: 10px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: 2px solid #00ff41;
+        box-shadow: 0 0 10px #00ff41;
+      }
+      h2 {
+        color: #ffffff;
+        text-shadow: 2px 2px 4px #00ff41;
+        border-bottom: 1px solid #00ff41;
+        padding-bottom: 10px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 10px;
+        padding: 5px;
+        transition: all 0.3s ease;
+      }
+      li:hover {
+        background-color: #008f11;
+        color: #000;
+        transform: translateX(5px);
+      }
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <form
+        id="search-form"
+        action="https://www.google.com/search"
+        method="get"
+        target="_blank"
+      >
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          placeholder="Hack the mainframe..."
+        />
+        <input type="submit" value="Execute" />
+      </form>
+    </div>
+
+    <div class="list-container">
+      <div class="list">
+        <h2>Spanish</h2>
+        <ul>
+          <li><a href="https://www.duolingo.com">Duolingo</a></li>
+          <li><a href="https://www.speechling.com/listening">Speechling</a></li>
+          <li><a href="https://www.busuu.com">Busuu</a></li>
+          <li><a href="https://www.bbc.com/mundo">BBC Mundo</a></li>
+        </ul>
+      </div>
+      <div class="list">
+        <h2>Learning</h2>
+        <ul>
+          <li><a href="https://www.fast.ai">Fast.ai</a></li>
+          <li>
+            <a href="https://ecollege.etbonline.ie/my/courses.php">Ecollege</a>
+          </li>
+          <li><a href="https://www.coursera.com">Coursera</a></li>
+        </ul>
+      </div>
+      <div class="list">
+        <h2>Productivity</h2>
+        <ul>
+          <li><a href="https://www.notesnook.com">Notesnook</a></li>
+          <li><a href="https://www.speechling.com/listening">Speechling</a></li>
+          <li><a href="https://www.busuu.com">Busuu</a></li>
+          <li><a href="https://www.bbc.com/mundo">BBC Mundo</a></li>
+        </ul>
+      </div>
+      <div class="list">
+        <h2>Entertainment</h2>
+        <ul>
+          <li><a href="https://www.youtube.com">Youtube</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://www.spotify.com">Spotify</a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
