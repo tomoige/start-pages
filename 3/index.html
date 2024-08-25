@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Y2K Start Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: "VT323", monospace;
+        background: linear-gradient(45deg, #ff00ff, #00ffff);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        border: 2px solid #fff;
+      }
+      h1 {
+        color: #ff00ff;
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px #00ffff;
+      }
+      #search-form {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      #search-input {
+        width: 300px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 2px solid #ff00ff;
+        border-radius: 24px;
+        outline: none;
+        background-color: #e0e0e0;
+      }
+      #search-button {
+        background-color: #ff00ff;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        border-radius: 24px;
+        margin-left: 0.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      #search-button:hover {
+        background-color: #cc00cc;
+      }
+      .quick-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .quick-links a {
+        color: #00ffff;
+        text-decoration: none;
+        font-size: 1.2rem;
+        text-shadow: 1px 1px #ff00ff;
+      }
+      .quick-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+    <div class="container">
+      <h1>Welcome to Your Start Page</h1>
+      <form
+        id="search-form"
+        action="https://www.google.com/search"
+        method="get"
+      >
+        <input
+          type="text"
+          id="search-input"
+          name="q"
+          placeholder="Search Google..."
+        />
+        <button type="submit" id="search-button">Search</button>
+      </form>
+      <div class="quick-links">
+        <a href="https://www.gmail.com">Gmail</a>
+        <a href="https://www.google.com/maps">Maps</a>
+        <a href="https://www.youtube.com">YouTube</a>
+        <a href="https://drive.google.com">Drive</a>
+      </div>
+    </div>
+    <script>
+      document
+        .getElementById("search-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const query = document.getElementById("search-input").value;
+          if (query) {
+            window.location.href = `https://www.google.com/search?q=${encodeURIComponent(
+              query
+            )}`;
+          }
+        });
+    </script>
+  </body>
+</html>
