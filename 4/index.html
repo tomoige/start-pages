@@ -5,89 +5,315 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Maynooth Start Page</title>
     <style>
+      :root {
+        --bg: #f4f6f8;
+        --surface: #ffffff;
+        --text: #0f172a;
+        --muted-text: #475569;
+        --primary: #2563eb;
+        --primary-contrast: #ffffff;
+        --accent: #14b8a6;
+        --ring: rgba(37, 99, 235, 0.35);
+        --shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+        --radius: 14px;
+      }
+
+      [data-theme="dark"] {
+        --bg: #0b1220;
+        --surface: #0f172a;
+        --text: #e5e7eb;
+        --muted-text: #94a3b8;
+        --primary: #60a5fa;
+        --primary-contrast: #0b1220;
+        --accent: #2dd4bf;
+        --ring: rgba(96, 165, 250, 0.35);
+        --shadow: 0 8px 28px rgba(15, 23, 42, 0.65);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #eaeaea;
+        background: radial-gradient(
+            1200px 800px at 10% -10%,
+            rgba(37, 99, 235, 0.12),
+            transparent
+          ),
+          radial-gradient(
+            1000px 700px at 110% 10%,
+            rgba(20, 184, 166, 0.12),
+            transparent
+          ),
+          var(--bg);
+        color: var(--text);
         margin: 0;
         display: flex;
-        height: 100vh;
+        min-height: 100vh;
+        line-height: 1.5;
       }
+
       .sidebar {
-        width: 250px;
-        padding: 20px;
-        background-color: #ffffff;
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        width: 290px;
+        padding: 24px;
+        background-color: color-mix(in srgb, var(--surface), transparent 0%);
+        backdrop-filter: saturate(140%) blur(8px);
+        border-right: 1px solid rgba(148, 163, 184, 0.15);
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
       }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
       h1 {
-        text-align: center;
-        color: #2c3e50;
-        margin-bottom: 20px;
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: 0.2px;
+        color: var(--text);
       }
+
+      .theme-toggle {
+        appearance: none;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 999px;
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: transform 0.15s ease, background 0.2s ease,
+          border-color 0.2s ease;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+      }
+      .theme-toggle:hover {
+        transform: translateY(-1px);
+        border-color: var(--ring);
+      }
+      .theme-toggle:active {
+        transform: translateY(0);
+      }
+
       .links {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
+        margin-top: 8px;
       }
-      a {
-        padding: 15px 30px;
-        background-color: #2980b9;
-        color: white;
+      .link {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--surface), transparent 0%),
+          color-mix(in srgb, var(--surface), transparent 6%)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: var(--radius);
+        color: var(--text);
         text-decoration: none;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: background-color 0.3s, transform 0.2s;
-        font-size: 1.2em;
+        transition: transform 0.15s ease, border-color 0.2s ease,
+          box-shadow 0.2s ease;
+        font-size: 1rem;
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05) inset;
       }
-      a:hover {
-        background-color: #1abc9c;
+      .link:hover {
         transform: translateY(-2px);
+        border-color: var(--ring);
+        box-shadow: 0 6px 16px rgba(2, 6, 23, 0.12);
       }
-      a:active {
+      .link:active {
         transform: translateY(0);
       }
+      .link span {
+        color: var(--muted-text);
+        font-size: 0.9rem;
+      }
+
       .content {
         flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: 32px;
       }
+
+      .card {
+        width: min(1400px, 100%);
+        background: linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--surface), transparent 0%),
+          color-mix(in srgb, var(--surface), transparent 4%)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.25);
+        border-radius: calc(var(--radius) + 4px);
+        box-shadow: var(--shadow);
+        padding: 20px 20px 28px;
+      }
+
       .timetable {
         text-align: center;
       }
+      .timetable h2 {
+        margin: 4px 0 14px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--muted-text);
+      }
       .timetable img {
-        max-width: 100%;
+        display: block;
+        width: 100%;
         height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 12px;
+        box-shadow: 0 10px 24px rgba(2, 6, 23, 0.18);
+      }
+
+      @media (max-width: 900px) {
+        body {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+          border-right: none;
+          border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        }
+        .links {
+          flex-direction: row;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          gap: 10px;
+          padding-bottom: 4px;
+        }
+        .link {
+          white-space: nowrap;
+          padding: 12px 14px;
+          font-size: 0.95rem;
+        }
+        .content {
+          padding: 20px;
+        }
+        .card {
+          padding: 16px 16px 22px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="sidebar">
-      <h1>Maynooth University</h1>
+      <div class="brand">
+        <h1>Maynooth University</h1>
+        <button
+          class="theme-toggle"
+          id="themeToggle"
+          title="Toggle theme"
+          aria-label="Toggle dark mode"
+        >
+          🌗
+        </button>
+      </div>
       <div class="links">
-        <a href="https://portal.office.com" target="_blank">O365</a>
+        <a class="link" href="https://portal.office.com" target="_blank"
+          >O365 <span>Office 365</span></a
+        >
         <a
+          class="link"
           href="https://studentweb.maynoothuniversity.ie/pls/prodi41/w99pkg.mi_main_menu"
           target="_blank"
           >Student Web Account</a
         >
-        <a href="https://moodle.maynoothuniversity.ie/my/" target="_blank"
+        <a
+          class="link"
+          href="https://moodle.maynoothuniversity.ie/my/"
+          target="_blank"
           >Moodle</a
         >
-        <a href="https://ecollege.etbonline.ie/my/courses.php" target="_blank"
+        <a
+          class="link"
+          href="https://ecollege.etbonline.ie/my/courses.php"
+          target="_blank"
           >eCollege</a
         >
-        <a href="../university-work/index.html" target="_blank">Work Links</a>
+        <a class="link" href="../university-work/index.html" target="_blank"
+          >Work Links</a
+        >
       </div>
     </div>
     <div class="content">
-      <div class="timetable">
-        <h2>Timetable</h2>
-        <img src="images/timetable2.png" alt="Timetable" />
-        <!-- Replace 'path/to/your/timetable.jpg' with the actual path to your timetable image -->
+      <div class="card">
+        <div class="timetable">
+          <h2>Timetable</h2>
+          <img src="images/timetable2.png" alt="Timetable" />
+        </div>
       </div>
     </div>
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = saved || (prefersDark ? "dark" : "light");
+          if (theme === "dark")
+            document.documentElement.setAttribute("data-theme", "dark");
+          var initBtn = document.getElementById("themeToggle");
+          if (initBtn) {
+            initBtn.textContent = theme === "dark" ? "🌙" : "☀️";
+            initBtn.setAttribute(
+              "aria-label",
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            );
+            initBtn.setAttribute(
+              "title",
+              theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+            );
+          }
+        } catch (e) {}
+      })();
+
+      (function () {
+        var toggle = document.getElementById("themeToggle");
+        if (!toggle) return;
+        toggle.addEventListener("click", function () {
+          var isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+          var next = isDark ? "light" : "dark";
+          if (next === "dark") {
+            document.documentElement.setAttribute("data-theme", "dark");
+          } else {
+            document.documentElement.removeAttribute("data-theme");
+          }
+          try {
+            localStorage.setItem("theme", next);
+          } catch (e) {}
+          toggle.textContent = next === "dark" ? "🌙" : "☀️";
+          toggle.setAttribute(
+            "aria-label",
+            next === "dark" ? "Switch to light mode" : "Switch to dark mode"
+          );
+          toggle.setAttribute(
+            "title",
+            next === "dark" ? "Switch to light mode" : "Switch to dark mode"
+          );
+        });
+      })();
+    </script>
   </body>
 </html>
